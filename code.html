@@ -45,7 +45,7 @@
                     <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank"href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank"href="https://github.com/bmore0fm3/Hunnid">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank"href="#">About</a>
@@ -63,17 +63,94 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function HelloWorld(){
-                            alert("hello world");
+                            // get the values from the page
+                            //Starts or controller function
+                            function getValues (){
+                                //get values from the page 
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+
+
+                                //parse strings into ints
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+
+                                if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                    // call generateNumbers
+                                    let numbers = generateNumbers(startValue, endValue);
+
+                                    //call display numbers
+                                    displayNumbers(numbers);
+
+                                }else {
+                                    alert("Number must be an Integer");
+                                
+                                }
+
+                            }
+
+                            //generate numbers from start value to end value
+                            //logic functions()
+                            function generateNumbers(startValue, endValue){
+                                let numbers = [];
+                                for (let index = startValue; index <= endValue; index++) {
+                                    numbers.push(index);  
+                                }
+
+                                return numbers;
+                            }
+
+                            //display the numbers and mark even numbers in bold
+                            //display or view functions
+                            let templateRows = "";
+                            function displayNumbers(numbers){
+                                for (let index = 0; index < numbers.length; index++) {
+                                
+                                    let number = numbers[index];
+                                    let className = "even";
+                                    
+                                    if(number % 2 === 0){
+                                        className = "even";
+
+                                    } else {
+                                        className = "odd";
+
+                                }
+                                //Template rows didn't show up here. Had to replace less than sign with ampersandlt; 
+                                templateRows += `&lt;tr>&lt;td class=${className}>${number}&lt;/td>&lt;/tr>`
+                                    
+                                }
+                                document.getElementById("results").innerHTML = templateRows;
+
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p> The code is structurd in one function</p>
-                    <h5>Hello World!</h5>
-                    <p>Hello World is a function that displays an alert with a message of Hello World!</p>
+                    <p> The Javascript code is structured with three functions</p>
+                    <h5>The getValues() function</h5>
+                    <p>The getValues() function does three things. The function retrieves the startValue and endValue from the 
+                        DOM by elementID. It then uses parseInt function to convert any strings to integers. Next, getValues() uses the 
+                        if else structure to perform a validation check. If the startValue AND endValue are integers then 
+                        generateNumbers() and displayNumbers() are called. If validation check fails, then an alert is shown 
+                        to the user requesting integers only.
+                    </p>
+                    <br>
+                    <h5>The generateNumbers() function</h5>
+                    <p>The generateNumbers() function uses startValue and endValue as input. generateNumbers() sets the index to
+                        the startValue in the for loop. It then pushes the index to the numbers array before looping repeatedly until
+                        the endValue is reached. The function then returns the numbers array.
+                    </p>
+                    <br>
+                    <h5>The displayNumbers() function</h5>
+                    <p>The displayNumbers() function uses the number array as input. A for loop will iterate to the length of the array.
+                        In the loop the number variable is set to the numbers[index]. If the value of numbers[index] is divisible by two, 
+                        then it is even and will be bold. If numbers[index] is odd it will not be bold. A template variable is set on each
+                        iteration of the for loop to capture the dynamically created table rows. Finally, the function updates the DOM for
+                        results with the table rows. 
+
+                    </p>
+
                 </div>
             </div>
         </div>
@@ -90,9 +167,9 @@
                     </div>
                     <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                         <div class="row">
-                            <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                            <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
-                            <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
+                            <div class="col social"><a href="https://www.linkedin.com/in/delandercollins" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                            <div class="col social"><a href="https://github.com/bmore0fm3" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
+                            <div class="col social"><a href="https://twitter.com/4citi1" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                         </div>
                         
                     </div>
