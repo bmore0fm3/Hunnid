@@ -37,8 +37,10 @@ function generateNumbers(startValue, endValue){
 
 //display the numbers and mark even numbers in bold
 //display or view functions
-let templateRows = "";
+
+
 function displayNumbers(numbers){
+    let templateRows = " ";
     for (let index = 0; index < numbers.length; index++) {
     
         let number = numbers[index];
